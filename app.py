@@ -2,12 +2,12 @@ import streamlit as st
 import pandas as pd
 from plot import make_chart
 
-# st.sidebar.image('logo.png', width=110)
 st.sidebar.image('logo.png', width=200)
 st.sidebar.title('Restaking TTL')
 
 df = pd.read_csv('ttl_all.csv')
 df['symbol']=df['symbol'].str.lower()
+df.replace('weth', 'ethereum', inplace=True)
 
 unique_symbols = tuple(df['symbol'].unique().tolist())
 
